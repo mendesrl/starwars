@@ -2,7 +2,8 @@
   <div id="app">
     <nav>
       <div class="nav-wrapper black">
-        <a href="#" class="brand-logo center">Star Wars</a>
+        <img class="brand-logo center" src="https://www.freepnglogos.com/uploads/star-wars-logo-3.png"
+        width="200px" height="90px">
       </div>
     </nav>
 
@@ -12,6 +13,7 @@
         <div>
           <img src="https://lumiere-a.akamaihd.net/v1/images/solo-a-star-wars-story-theatrical-poster-2_f4af9297.jpeg?region=0%2C397%2C1298%2C646&width=600" width="500px" height="300px">
         </div>
+
         <div>
           <div>
             <h1>{{ filme.title }}</h1>
@@ -53,6 +55,7 @@
 <script>
 import Filme from './services/filmes'
 import Pessoas from './services/pessoas'
+import { METHODS } from 'http';
 /*import Teste from './components/Teste'
 import Outro from './components/Outro'*/
 export default {
@@ -64,9 +67,6 @@ export default {
     return {
       filmes: [],
       pessoas: [],
-      id:{
-
-      } 
     }
     
   },
@@ -74,18 +74,44 @@ export default {
   mounted(){
     Filme.listar('films').then(resposta =>{
       this.filmes = resposta.data;
-    }),
-    Pessoas.listar('people').then(resposta =>{
-      this.pessoas = resposta.data;
-      console.log(resposta.data)
+      console.log(this.filmes);
+      this.filmes.results.forEach(filme => {
+        filme.characters.forEach(pessoa => {
+          this.buscarPessoa(pessoa).then(resposta => {
+            pessoa = resposta.data;
+            console.log(pessoa);
+            console.log(this.filmes);
+          });
+          console.log(pessoa);
+         
+        })
+        
+      });
     })
-  }
   
+
+  
+    
+  },
+  methods:
+  {
+    buscarPessoa(pessoa) {
+      pessoa = pessoa.replace('https://swapi.co/api/people','');
+      return Pessoas.listar('people'+pessoa);
+      
+    
+    }
+    
+  }
 }
+
 </script>
 
 <style>
 h1{
   font-size: 2.1rem;
 }
+
+body{background-image: url(https://d2v9y0dukr6mq2.cloudfront.net/video/thumbnail/3xEGOGX/nebula-universe-burst-of-light-deep-space-and-nebula-with-rays-of-light-universe-burst-of-light-space-background-abstract-illustration-animation-30fps-hd1080-seamless-loop_eyibkfehl__F0000.png);
+  }
 </style>
