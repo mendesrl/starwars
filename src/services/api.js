@@ -1,7 +1,7 @@
 import {http} from './config'
 
 export default {
-    listar:(rota) =>{
-        return http.get(rota);
+    buscar:(rota) =>{
+        return http.get(rota)
     }
 }
