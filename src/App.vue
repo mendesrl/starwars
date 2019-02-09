@@ -4,16 +4,13 @@
       <div class="nav-wrapper black">
         <img class="brand-logo center" 
         src="https://www.freepnglogos.com/uploads/star-wars-logo-3.png"
-        width="200px" height="100px">
+        width="250px" height="110px">
       </div>
     </nav>
     
     <div class="container">
       <div class="card-panel hoverable" v-for="filme in filmes.results" :key="filme.name">
-        <app-card
-          :idItem="poster(filme.episode_id)"
-          :titulo="filme.title"
-        />
+        <app-card :idItem="poster(filme.episode_id)"></app-card>
         <div>
           <h1>{{ filme.title }}</h1>
         </div>
@@ -29,27 +26,27 @@
           <span>{{ filme.director }}</span>
         </div>
         <div>
-          <a><span @click="vermaisdetalhes(filme)">Mais Detalhes</span></a>
+          <a ><span @click="vermaisdetalhes(filme)">Mais Detalhes</span></a>
           <div v-if="maisDetalhes == filme.title">
             <div>
               <span class="negrito">Personagens:</span>
               <span v-for="pessoa in filme.characters" :key="pessoa.name">
-                {{pessoa.name}}</span>
+                {{pessoa.name}}, </span>
             </div>
             <div>
               <span class="negrito">Planetas:</span>
               <span v-for="planeta in filme.planets" :key="planeta.name">
-                {{planeta.name}}</span>
+                {{planeta.name}}, </span>
             </div>
             <div>
               <span class="negrito">Naves:</span>
               <span v-for="nave in filme.starships" :key="nave.name">
-                {{nave.name}}</span>
+                {{nave.name}}, </span>
             </div>
             <div>
               <span class="negrito">Especies:</span>
               <span v-for="especie in filme.species" :key="especie.name">
-                {{especie.name}}</span>
+                {{especie.name}}, </span>
             </div>
         </div>      
       </div>
@@ -60,7 +57,6 @@
 
 <script>
 import api from './services/api'
-import { METHODS } from 'http';
 import AppCard from './components/AppCard'
 export default {
   components: {AppCard},
