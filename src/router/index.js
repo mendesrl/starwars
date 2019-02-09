@@ -1,7 +1,5 @@
 import Vue from 'vue'
 import Router from 'vue-router'
-
-
 import Teste from '@/components/AppCard'
 
 Vue.use(Router)

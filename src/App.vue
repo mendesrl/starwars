@@ -18,35 +18,31 @@
           <p>{{ filme.opening_crawl }}</p>
         </div>
         <div>
-          <span class="negrito">Ano de Lançamento:</span>
+          <span class="negrito"> Ano de Lançamento: </span>
           <span>{{ (filme.release_date).substr(-20,4) }}</span>
         </div>
         <div>
-          <span class="negrito">Direção:</span>
+          <span class="negrito"> Direção: </span>
           <span>{{ filme.director }}</span>
         </div>
         <div>
-          <a ><span @click="vermaisdetalhes(filme)">Mais Detalhes</span></a>
+          <a ><span @click="vermaisdetalhes(filme)"> Mais Detalhes </span></a>
           <div v-if="maisDetalhes == filme.title">
             <div>
-              <span class="negrito">Personagens:</span>
-              <span v-for="pessoa in filme.characters" :key="pessoa.name">
-                {{pessoa.name}}, </span>
+              <span class="negrito"> Personagens: </span>
+              <span v-for="pessoa in filme.characters" :key="pessoa.name"> {{pessoa.name}}, </span>
             </div>
             <div>
-              <span class="negrito">Planetas:</span>
-              <span v-for="planeta in filme.planets" :key="planeta.name">
-                {{planeta.name}}, </span>
+              <span class="negrito"> Planetas: </span>
+              <span v-for="planeta in filme.planets" :key="planeta.name"> {{planeta.name}}, </span>
             </div>
             <div>
               <span class="negrito">Naves:</span>
-              <span v-for="nave in filme.starships" :key="nave.name">
-                {{nave.name}}, </span>
+              <span v-for="nave in filme.starships" :key="nave.name"> {{nave.name}}, </span>
             </div>
             <div>
               <span class="negrito">Especies:</span>
-              <span v-for="especie in filme.species" :key="especie.name">
-                {{especie.name}}, </span>
+              <span v-for="especie in filme.species" :key="especie.name"> {{especie.name}}, </span>
             </div>
         </div>      
       </div>
